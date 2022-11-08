@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'firstpage.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -43,17 +45,5 @@ class SplashScreenState extends State<MyHomePage> {
   Widget build(BuildContextcontext) {
     return Container(color: Colors.red, child: Image.asset("./asset/Logo.png"));
     //FlutterLogo(size: MediaQuery.of(context).size.height));
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContextcontext) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Exemple")),
-      body: const Center(
-          child: Text("Welcome to Home Page",
-              style: TextStyle(color: Colors.black, fontSize: 30))),
-    );
   }
 }
