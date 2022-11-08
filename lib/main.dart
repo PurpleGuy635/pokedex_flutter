@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'firstpage.dart';
+import 'menu.dart';
+import 'mapscreen.dart';
+import 'pokedexscreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +20,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const MyHomePage(title: 'Fluttler pokedex'),
+      home: const MyHomePage(title: 'Flutter pokedex'),
+      routes: <String, WidgetBuilder>{
+        '/route1': (BuildContext context) => mapscreen(),
+        '/route2': (BuildContext context) => pokedexscreen(),
+        //'/route3': (BuildContext context) => ThirdPage(title: 'Page 3'),
+      },
     );
   }
 }
