@@ -18,18 +18,17 @@ class HomeScreen extends StatelessWidget {
                   Navigator.pushNamed(context, '/route1');
                 },
                 child: const Text("Pokedex - MAP"),
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.resolveWith(
-                        (states) => Colors.amber))),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(350, 75),
+                )),
             const Padding(padding: EdgeInsets.only(bottom: 10)),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/route2');
               },
               child: const Text("Pokedex"),
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.resolveWith((states) => Colors.amber),
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(350, 75),
               ),
             ),
           ],
