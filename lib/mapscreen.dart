@@ -1,12 +1,51 @@
 import 'package:flutter/material.dart';
 
 class mapscreen extends StatelessWidget {
+  int _counter = 0;
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      _counter--;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("MAP")),
       body: const Center(
         child: Text('Pokedex'),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        color: Colors.red,
+        child: Container(
+          height: 50,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              IconButton(
+                icon: const Icon(
+                  Icons.navigate_before,
+                  color: Colors.black,
+                ),
+                onPressed: _decrementCounter,
+              ),
+              IconButton(
+                icon: const Icon(
+                  Icons.navigate_next,
+                  color: Colors.white,
+                ),
+                onPressed: _incrementCounter,
+              ),
+            ],
+          ),
+        ),
       ),
       drawer: Drawer(
         child: ListView(
@@ -17,6 +56,13 @@ class mapscreen extends StatelessWidget {
                 color: Colors.red,
               ),
               child: Text('MAP'),
+            ),
+            ListTile(
+              title: const Text('Retour'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+              },
             ),
             ListTile(
               title: const Text('Kanto'),
@@ -41,4 +87,6 @@ class mapscreen extends StatelessWidget {
       ),
     );
   }
+
+  void setState(Null Function() param0) {}
 }
