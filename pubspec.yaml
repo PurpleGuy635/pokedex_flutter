@@ -66,6 +66,9 @@ flutter:
 
   assets:
    - ./asset/Logo.png
+   - ./asset/Kanto.png
+   - ./asset/Johto.png
+   - ./asset/hoen.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
