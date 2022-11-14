@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
               child: const Text("Pokedex"),
               style: ButtonStyle(
                 backgroundColor:
-                    MaterialStateProperty.resolveWith((states) => Colors.red),
+                    MaterialStateProperty.resolveWith((states) => Colors.amber),
               ),
             ),
           ],
