@@ -58,6 +58,13 @@ class mapscreen extends StatelessWidget {
               child: Text('MAP'),
             ),
             ListTile(
+              title: const Text('Retour'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
               title: const Text('Kanto'),
               onTap: () {
                 Navigator.pop(context);
