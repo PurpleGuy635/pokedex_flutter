@@ -2,12 +2,43 @@ import 'package:flutter/material.dart';
 
 class mapscreen extends StatelessWidget {
   @override
-  Widget build(BuildContextcontext) {
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Pokedex - Map")),
+      appBar: AppBar(title: Text("MAP")),
       body: const Center(
-          child: Text("Welcome to Map screen",
-              style: TextStyle(color: Colors.black, fontSize: 30))),
+        child: Text('Pokedex'),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.red,
+              ),
+              child: Text('MAP'),
+            ),
+            ListTile(
+              title: const Text('Kanto'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Johto'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Hoen'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
