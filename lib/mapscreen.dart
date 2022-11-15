@@ -12,7 +12,7 @@ class StateTest extends State<Mapscreen> {
 
   void _incrementCounter() {
     setState(() {
-      if (_counter == 6) {
+      if (_counter == 7) {
         _counter = -1;
       }
       _counter++;
@@ -22,7 +22,7 @@ class StateTest extends State<Mapscreen> {
   void _decrementCounter() {
     setState(() {
       if (_counter == 0) {
-        _counter = 7;
+        _counter = 8;
       }
       _counter--;
     });
@@ -122,6 +122,18 @@ class StateTest extends State<Mapscreen> {
             ),
             ListTile(
               title: const Text('Kalos'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('alola'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Kanto'),
               onTap: () {
                 Navigator.pop(context);
               },
