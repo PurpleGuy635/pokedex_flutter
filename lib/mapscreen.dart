@@ -9,23 +9,61 @@ class Mapscreen extends StatefulWidget {
 
 class StateTest extends State<Mapscreen> {
   int _counter = 0;
+  Widget body = Image.asset("./asset/Kanto.png");
 
   void _incrementCounter() {
     setState(() {
-      if (_counter == 7) {
+      if (_counter == 6) {
         _counter = -1;
       }
       _counter++;
+
+      /*switch (_counter) {
+        case 0:
+          body = Image.asset("./asset/Kanto.png");
+          break;
+        case 1:
+          body = Image.asset("./asset/hoen.png");
+          break;
+      }*/
+    });
+    update();
+  }
+
+  update() {
+    setState(() {
+      if (_counter == 0) {
+        body = Image.asset("./asset/Kanto.png");
+      }
+      if (_counter == 1) {
+        body = Image.asset("./asset/Johto.png");
+      }
+      if (_counter == 2) {
+        body = Image.asset("./asset/hoen.png");
+      }
+      if (_counter == 3) {
+        body = Image.asset("./asset/sinnoh.png");
+      }
+      if (_counter == 4) {
+        body = Image.asset("./asset/Unys.png");
+      }
+      if (_counter == 5) {
+        body = Image.asset("./asset/Kalos.png");
+      }
+      if (_counter == 6) {
+        body = Image.asset("./asset/alola.png");
+      }
     });
   }
 
   void _decrementCounter() {
     setState(() {
       if (_counter == 0) {
-        _counter = 8;
+        _counter = 7;
       }
       _counter--;
     });
+    update();
   }
 
   @override
@@ -36,14 +74,19 @@ class StateTest extends State<Mapscreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Pokedex'),
+            const Text('Pokedex'),
             const Text(
-              'Ce chiffre correspond à la région de :',
+              'Ce chiffre correspond à la région du pokedex :',
             ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            SizedBox(
+              height: 300,
+              width: 300,
+              child: body,
+            )
           ],
         ),
       ),
@@ -95,6 +138,7 @@ class StateTest extends State<Mapscreen> {
               onTap: () {
                 _counter = 0;
                 Navigator.pop(context);
+                update();
               },
             ),
             ListTile(
@@ -102,6 +146,7 @@ class StateTest extends State<Mapscreen> {
               onTap: () {
                 _counter = 1;
                 Navigator.pop(context);
+                update();
               },
             ),
             ListTile(
@@ -109,6 +154,7 @@ class StateTest extends State<Mapscreen> {
               onTap: () {
                 _counter = 2;
                 Navigator.pop(context);
+                update();
               },
             ),
             ListTile(
@@ -116,6 +162,7 @@ class StateTest extends State<Mapscreen> {
               onTap: () {
                 _counter = 3;
                 Navigator.pop(context);
+                update();
               },
             ),
             ListTile(
@@ -123,6 +170,7 @@ class StateTest extends State<Mapscreen> {
               onTap: () {
                 _counter = 4;
                 Navigator.pop(context);
+                update();
               },
             ),
             ListTile(
@@ -130,18 +178,15 @@ class StateTest extends State<Mapscreen> {
               onTap: () {
                 _counter = 5;
                 Navigator.pop(context);
+                update();
               },
             ),
             ListTile(
               title: const Text('alola'),
               onTap: () {
+                _counter = 6;
                 Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Kanto'),
-              onTap: () {
-                Navigator.pop(context);
+                update();
               },
             ),
           ],
