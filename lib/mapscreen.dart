@@ -93,36 +93,42 @@ class StateTest extends State<Mapscreen> {
             ListTile(
               title: const Text('Kanto'),
               onTap: () {
+                _counter = 0;
                 Navigator.pop(context);
               },
             ),
             ListTile(
               title: const Text('Johto'),
               onTap: () {
+                _counter = 1;
                 Navigator.pop(context);
               },
             ),
             ListTile(
               title: const Text('Hoen'),
               onTap: () {
+                _counter = 2;
                 Navigator.pop(context);
               },
             ),
             ListTile(
               title: const Text('Sinnoh'),
               onTap: () {
+                _counter = 3;
                 Navigator.pop(context);
               },
             ),
             ListTile(
               title: const Text('Unys'),
               onTap: () {
+                _counter = 4;
                 Navigator.pop(context);
               },
             ),
             ListTile(
               title: const Text('Kalos'),
               onTap: () {
+                _counter = 5;
                 Navigator.pop(context);
               },
             ),
