@@ -17,7 +17,6 @@ class StateTest extends State<Mapscreen> {
         _counter = -1;
       }
       _counter++;
-      update();
 
       /*switch (_counter) {
         case 0:
@@ -28,30 +27,33 @@ class StateTest extends State<Mapscreen> {
           break;
       }*/
     });
+    update();
   }
 
   update() {
-    if (_counter == 0) {
-      body = Image.asset("./asset/Kanto.png");
-    }
-    if (_counter == 1) {
-      body = Image.asset("./asset/Johto.png");
-    }
-    if (_counter == 2) {
-      body = Image.asset("./asset/hoen.png");
-    }
-    if (_counter == 3) {
-      body = Image.asset("./asset/sinnoh.png");
-    }
-    if (_counter == 4) {
-      body = Image.asset("./asset/Unys.png");
-    }
-    if (_counter == 5) {
-      body = Image.asset("./asset/Kalos.png");
-    }
-    if (_counter == 6) {
-      body = Image.asset("./asset/alola.png");
-    }
+    setState(() {
+      if (_counter == 0) {
+        body = Image.asset("./asset/Kanto.png");
+      }
+      if (_counter == 1) {
+        body = Image.asset("./asset/Johto.png");
+      }
+      if (_counter == 2) {
+        body = Image.asset("./asset/hoen.png");
+      }
+      if (_counter == 3) {
+        body = Image.asset("./asset/sinnoh.png");
+      }
+      if (_counter == 4) {
+        body = Image.asset("./asset/Unys.png");
+      }
+      if (_counter == 5) {
+        body = Image.asset("./asset/Kalos.png");
+      }
+      if (_counter == 6) {
+        body = Image.asset("./asset/alola.png");
+      }
+    });
   }
 
   void _decrementCounter() {
@@ -60,8 +62,8 @@ class StateTest extends State<Mapscreen> {
         _counter = 7;
       }
       _counter--;
-      update();
     });
+    update();
   }
 
   @override
@@ -134,7 +136,9 @@ class StateTest extends State<Mapscreen> {
             ListTile(
               title: const Text('Kanto'),
               onTap: () {
+                _counter = 0;
                 Navigator.pop(context);
+                update();
               },
             ),
             ListTile(
@@ -142,6 +146,7 @@ class StateTest extends State<Mapscreen> {
               onTap: () {
                 _counter = 1;
                 Navigator.pop(context);
+                update();
               },
             ),
             ListTile(
@@ -149,6 +154,7 @@ class StateTest extends State<Mapscreen> {
               onTap: () {
                 _counter = 2;
                 Navigator.pop(context);
+                update();
               },
             ),
             ListTile(
@@ -156,6 +162,7 @@ class StateTest extends State<Mapscreen> {
               onTap: () {
                 _counter = 3;
                 Navigator.pop(context);
+                update();
               },
             ),
             ListTile(
@@ -163,6 +170,7 @@ class StateTest extends State<Mapscreen> {
               onTap: () {
                 _counter = 4;
                 Navigator.pop(context);
+                update();
               },
             ),
             ListTile(
@@ -170,12 +178,15 @@ class StateTest extends State<Mapscreen> {
               onTap: () {
                 _counter = 5;
                 Navigator.pop(context);
+                update();
               },
             ),
             ListTile(
               title: const Text('alola'),
               onTap: () {
+                _counter = 6;
                 Navigator.pop(context);
+                update();
               },
             ),
           ],
