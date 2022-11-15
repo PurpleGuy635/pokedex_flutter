@@ -71,6 +71,7 @@ flutter:
    - ./asset/Johto.png
    - ./asset/hoen.png
    - ./asset/sinnoh.png
+   - ./asset/Unys.png
    - ./asset/Kalos.png
    - ./asset/alola.png
 
