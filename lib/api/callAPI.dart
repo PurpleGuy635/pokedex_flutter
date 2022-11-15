@@ -6,6 +6,9 @@ import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
 class API {
+  ///
+  ///Instancier l'api et appeler la méthode call avec comme paramètre un id.
+  ///
   final String _URL = 'https://pokeapi.co/api/v2/pokemon/';
   late Map<String, dynamic> pokemons;
 
