@@ -108,6 +108,24 @@ class StateTest extends State<Mapscreen> {
                 Navigator.pop(context);
               },
             ),
+            ListTile(
+              title: const Text('Sinnoh'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Unys'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Kalos'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
           ],
         ),
       ),
