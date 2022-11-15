@@ -1,8 +1,32 @@
 import 'package:flutter/material.dart';
 
-class mapscreen extends StatelessWidget {
-  Test test = Test();
+class Mapscreen extends StatefulWidget {
+  const Mapscreen({Key? key}) : super(key: key);
+
+  @override
+  State<Mapscreen> createState() => StateTest();
+}
+
+class StateTest extends State<Mapscreen> {
   int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      if (_counter == 6) {
+        _counter = -1;
+      }
+      _counter++;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      if (_counter == 0) {
+        _counter = 7;
+      }
+      _counter--;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +41,7 @@ class mapscreen extends StatelessWidget {
               'You have pushed the button this many times:',
             ),
             Text(
-              '',
+              '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
@@ -36,14 +60,14 @@ class mapscreen extends StatelessWidget {
                   Icons.navigate_before,
                   color: Colors.black,
                 ),
-                onPressed: _decrementCounter,
+                onPressed: () => _decrementCounter(),
               ),
               IconButton(
                 icon: const Icon(
                   Icons.navigate_next,
                   color: Colors.white,
                 ),
-                onPressed: _incrementCounter,
+                onPressed: () => _incrementCounter(),
               ),
             ],
           ),
@@ -88,26 +112,5 @@ class mapscreen extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class Test extends State {
-  int _counter = 0;
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
   }
 }
