@@ -22,7 +22,7 @@ class StateTest extends State<Mapscreen> {
   void _decrementCounter() {
     setState(() {
       if (_counter == 0) {
-        _counter = 7;
+        _counter = 8;
       }
       _counter--;
     });
