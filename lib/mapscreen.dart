@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 
 class mapscreen extends StatelessWidget {
+  Test test = Test();
   int _counter = 0;
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("MAP")),
-      body: const Center(
-        child: Text('Pokedex'),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('Pokedex'),
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
@@ -87,6 +89,25 @@ class mapscreen extends StatelessWidget {
       ),
     );
   }
+}
 
-  void setState(Null Function() param0) {}
+class Test extends State {
+  int _counter = 0;
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      _counter--;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
 }
