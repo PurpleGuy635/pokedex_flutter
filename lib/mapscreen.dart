@@ -38,7 +38,7 @@ class StateTest extends State<Mapscreen> {
           children: <Widget>[
             Text('Pokedex'),
             const Text(
-              'You have pushed the button this many times:',
+              'Ce chiffre correspond à la région de :',
             ),
             Text(
               '$_counter',
