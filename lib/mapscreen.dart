@@ -123,9 +123,23 @@ class StateTest extends State<Mapscreen> {
                 ),
                 onPressed: () => _incrementCounter(),
               ),
+              IconButton(
+                icon: const Icon(
+                  Icons.thumb_up,
+                  color: Colors.white,
+                ),
+                onPressed: () => _incrementCounter(),
+              ),
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        label: const Text('like'),
+        icon: const Icon(Icons.thumb_up),
+        backgroundColor: Colors.blue,
       ),
       drawer: Drawer(
         child: ListView(
