@@ -69,6 +69,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
   assets:
+   - ./asset/lists/pokelist.json
    - ./asset/images/
    - ./asset/audio/
   
