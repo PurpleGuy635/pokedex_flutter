@@ -11,61 +11,76 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-                //image: AssetImage("./asset/dracaufeu.png"), fit: BoxFit.cover)),
-                image: AssetImage("./asset/images/alola.png"),
+                image: AssetImage("./asset/images/drac.png"),
                 fit: BoxFit.cover)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Positioned(
               child: (Image.asset(
-                "./asset/images/Logo.png",
-                height: 100,
-                width: 100,
-              )),
-            ),
-            Positioned(
-              top: 10,
-              left: 1000,
-              child: (Image.asset(
-                "./asset/images/Logo.png",
+                "./asset/images/evol.png",
                 height: 100,
                 width: 100,
               )),
             ),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                const Padding(padding: EdgeInsets.only(bottom: 25)),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/route1');
-                    },
-                    child: const Text("Pokedex - MAP"),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(350, 75),
-                    )),
-                const Padding(padding: EdgeInsets.only(bottom: 10)),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/route2');
-                  },
-                  child: const Text("Pokedex"),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(350, 75),
-                  ),
+                Positioned(
+                  top: 10,
+                  left: 1000,
+                  child: (Image.asset(
+                    "./asset/images/sab.png",
+                    height: 100,
+                    width: 100,
+                  )),
                 ),
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Positioned(
-                      right: 100,
-                      top: 10,
-                      child: (Image.asset(
-                        "./asset/images/Logo.png",
-                        height: 100,
-                        width: 100,
-                      )),
+                    const Padding(padding: EdgeInsets.only(bottom: 25)),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/route1');
+                        },
+                        child: const Text("Pokedex - MAP"),
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(350, 75),
+                        )),
+                    const Padding(padding: EdgeInsets.only(bottom: 10)),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/route2');
+                      },
+                      child: const Text("Pokedex"),
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: const Size(350, 75),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Positioned(
+                          right: 100,
+                          child: (Image.asset(
+                            "./asset/images/pika.png",
+                            height: 100,
+                            width: 100,
+                          )),
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Positioned(
+                              right: 100,
+                              child: (Image.asset(
+                                "./asset/images/tor.png",
+                                height: 100,
+                                width: 100,
+                              )),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ],
                 ),
