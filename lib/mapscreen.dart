@@ -96,6 +96,13 @@ class StateTest extends State<Mapscreen> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        label: const Text('like'),
+        icon: const Icon(Icons.thumb_up),
+        backgroundColor: Colors.blue,
+      ),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         color: Colors.red,
