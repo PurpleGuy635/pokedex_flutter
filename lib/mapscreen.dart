@@ -10,7 +10,6 @@ class Mapscreen extends StatefulWidget {
 class StateTest extends State<Mapscreen> {
   int _counter = 0;
   int _like = 0;
-  bool vrai = false;
   String _region = "Kanto";
   String kanto = "Kanto";
   String johto = "Johto";
