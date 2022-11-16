@@ -12,7 +12,7 @@ class StateTest extends State<Mapscreen> {
   String _region = "";
   String kanto = "Kanto";
   String johto = "Johto";
-  String hoen = "Hoen";
+  String hoenn = "Hoenn";
   String sinnoh = "Sinnoh";
   String unys = "Unys";
   String kalos = "Kalos";
@@ -21,6 +21,7 @@ class StateTest extends State<Mapscreen> {
 
   void _incrementCounter() {
     setState(() {
+      update();
       if (_counter == 6) {
         _counter = -1;
       }
@@ -34,28 +35,39 @@ class StateTest extends State<Mapscreen> {
       if (_counter == 0) {
         _region = kanto;
         body = Image.asset("./asset/images/Kanto.png");
+        info =
+            "Il est l'une des régions imaginaires de la série jeux vidéo Pokémon. Présent dans les jeux vidéo Pokémon,Il a été conçu en se inspirant région japonais la Kanto qui comprend, en plus d'autres ville, Aussi la capitale du Japon, Tokyo.";
       }
       if (_counter == 1) {
         _region = johto;
+        info = "test1";
         body = Image.asset("./asset/images/Johto.png");
       }
       if (_counter == 2) {
-        _region = hoen;
+        info =
+            "Hoenn est une région du monde Pokémon qui apparaît dans les jeux Pokémon Rubis, Saphir et Émeraude,etc. Elle est située au sud-ouest de Johto et de Kanto. Elle correspond à l'île japonaise de Kyushu et à une partie de l'archipel de la préfecture d'Okinawa.";
+        _region = hoenn;
         body = Image.asset("./asset/images/hoen.png");
       }
       if (_counter == 3) {
+        info =
+            "Sinnoh est une région du monde Pokémon, lieu où se déroule l' aventure des jeux Pokémon Diamant, Perle et Platine.La région Sinnoh se trouve au nord de Kanto. Cette région est inspirée de l'île de Hokkaido, au Japon. Autrefois, cette région se nommait Hisui.";
         _region = sinnoh;
         body = Image.asset("./asset/images/sinnoh.png");
       }
       if (_counter == 4) {
+        info =
+            "Unys est une nouvelle région et le lieu principal de Pokémon Noire et Blanche. Elle est éloignée de Kanto, Johto, Hoenn et Sinnoh. Ces régions ne sont accessibles que via avion ou bateau en partant d'Unys.Celle-ci est beaucoup plus industrialisée que les précédentes.";
         _region = unys;
         body = Image.asset("./asset/images/Unys.png");
       }
       if (_counter == 5) {
+        info = "test5";
         _region = kalos;
         body = Image.asset("./asset/images/Kalos.png");
       }
       if (_counter == 6) {
+        info = "test6";
         _region = alola;
         body = Image.asset("./asset/images/alola.png");
       }
@@ -64,6 +76,7 @@ class StateTest extends State<Mapscreen> {
 
   void _decrementCounter() {
     setState(() {
+      update();
       if (_counter == 0) {
         _counter = 7;
       }
@@ -93,11 +106,23 @@ class StateTest extends State<Mapscreen> {
               '$_region',
               style: Theme.of(context).textTheme.headline4,
             ),
+            Text(
+              '$info',
+            ),
             SizedBox(
               height: 300,
               width: 300,
               child: body,
-            )
+            ),
+            Text(
+              '$info',
+            ),
+            FloatingActionButton(
+              onPressed: _likeBtn,
+              child: Icon(Icons.thumb_up),
+            ),
+            Text("Nombre de like : "
+                "$_like"),
           ],
         ),
       ),
