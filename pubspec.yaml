@@ -30,6 +30,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   just_audio: ^0.9.13
+  video_player:
   flutter:
     sdk: flutter
     
