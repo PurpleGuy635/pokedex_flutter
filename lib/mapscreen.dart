@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
 
 class Mapscreen extends StatefulWidget {
   const Mapscreen({Key? key}) : super(key: key);
@@ -8,6 +9,7 @@ class Mapscreen extends StatefulWidget {
 }
 
 class StateTest extends State<Mapscreen> {
+  MyApp myApp = MyApp();
   int _counter = 0;
   int _like = 0;
   String info =
@@ -99,26 +101,24 @@ class StateTest extends State<Mapscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Map")),
+      appBar: AppBar(title: Text("Quelques maps de Pokemon")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
                 style: TextStyle(
-                    fontWeight: FontWeight.w600, height: 1, fontSize: 30),
+                    fontWeight: FontWeight.w600, height: 2, fontSize: 30),
                 'Pokedex'),
-            const Text(
+            Text(
               style: TextStyle(
                   fontWeight: FontWeight.bold, height: 1, fontSize: 20),
-              'Cette région se nomme :',
+              'Voici la region $_region',
+              //style: Theme.of(context).textTheme.headline4,
             ),
             Text(
-              '$_region',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            Text(
-              '$info',
+              '- $info -',
+              style: TextStyle(fontWeight: FontWeight.normal),
             ),
             SizedBox(
               height: 300,
@@ -134,7 +134,6 @@ class StateTest extends State<Mapscreen> {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         color: Colors.red,
@@ -149,6 +148,13 @@ class StateTest extends State<Mapscreen> {
                   color: Colors.black,
                 ),
                 onPressed: () => _decrementCounter(),
+              ),
+              IconButton(
+                icon: const Icon(
+                  Icons.home_sharp,
+                  color: Colors.white,
+                ),
+                onPressed: () => Navigator.pop(context),
               ),
               IconButton(
                 icon: const Icon(
