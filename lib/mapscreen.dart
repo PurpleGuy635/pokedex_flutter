@@ -10,6 +10,7 @@ class Mapscreen extends StatefulWidget {
 class StateTest extends State<Mapscreen> {
   int _counter = 0;
   int _like = 0;
+  int test = 0;
   String info =
       "Il est l'une des régions imaginaires de la série jeux vidéo Pokémon. Présent dans les jeux vidéo Pokémon,Il a été conçu en se inspirant région japonais la Kanto qui comprend, en plus d'autres ville, Aussi la capitale du Japon, Tokyo.";
   String _region = "Kanto";
