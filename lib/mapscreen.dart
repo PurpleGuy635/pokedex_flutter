@@ -9,10 +9,7 @@ class Mapscreen extends StatefulWidget {
 
 class StateTest extends State<Mapscreen> {
   int _counter = 0;
-  int _like = 0;
-  String info =
-      "Il est l'une des régions imaginaires de la série jeux vidéo Pokémon. Présent dans les jeux vidéo Pokémon,Il a été conçu en se inspirant région japonais la Kanto qui comprend, en plus d'autres ville, Aussi la capitale du Japon, Tokyo.";
-  String _region = "Kanto";
+  String _region = "";
   String kanto = "Kanto";
   String johto = "Johto";
   String hoen = "Hoen";
@@ -24,18 +21,10 @@ class StateTest extends State<Mapscreen> {
 
   void _incrementCounter() {
     setState(() {
-      update();
       if (_counter == 6) {
         _counter = -1;
       }
       _counter++;
-    });
-    update();
-  }
-
-  void _likeBtn() {
-    setState(() {
-      _like++;
     });
     update();
   }
@@ -75,7 +64,6 @@ class StateTest extends State<Mapscreen> {
 
   void _decrementCounter() {
     setState(() {
-      update();
       if (_counter == 0) {
         _counter = 7;
       }
@@ -87,14 +75,14 @@ class StateTest extends State<Mapscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Map")),
+      appBar: AppBar(title: Text("MAP")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
                 style: TextStyle(
-                    fontWeight: FontWeight.w600, height: 1, fontSize: 30),
+                    fontWeight: FontWeight.w600, height: 1, fontSize: 50),
                 'Pokedex'),
             const Text(
               style: TextStyle(
@@ -109,16 +97,7 @@ class StateTest extends State<Mapscreen> {
               height: 300,
               width: 300,
               child: body,
-            ),
-            Text(
-              '$info',
-            ),
-            FloatingActionButton(
-              onPressed: _likeBtn,
-              child: Icon(Icons.thumb_up),
-            ),
-            Text("Nombre de like : "
-                "$_like"),
+            )
           ],
         ),
       ),
@@ -156,7 +135,7 @@ class StateTest extends State<Mapscreen> {
               decoration: BoxDecoration(
                 color: Colors.red,
               ),
-              child: Text('Map'),
+              child: Text('MAP'),
             ),
             ListTile(
               title: const Text('Retour'),
@@ -169,8 +148,8 @@ class StateTest extends State<Mapscreen> {
               title: const Text('Kanto'),
               onTap: () {
                 _counter = 0;
-                update();
                 Navigator.pop(context);
+                update();
               },
             ),
             ListTile(
