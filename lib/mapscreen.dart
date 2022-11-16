@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:just_audio/just_audio.dart';
+import 'package:just_audio/just_audio.dart';
 
 class Mapscreen extends StatefulWidget {
   const Mapscreen({Key? key}) : super(key: key);
@@ -22,6 +22,19 @@ class StateTest extends State<Mapscreen> {
   String kalos = "Kalos";
   String alola = "Alola";
   Widget body = Image.asset("./asset/images/Kanto.png");
+
+  late AudioPlayer player;
+  @override
+  void initState() {
+    super.initState();
+    player = AudioPlayer();
+  }
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -126,6 +139,15 @@ class StateTest extends State<Mapscreen> {
             ),
             FloatingActionButton(
               onPressed: _likeBtn,
+              child: Icon(Icons.thumb_up),
+            ),
+            Text("Nombre de like : "
+                "$_like"),
+            FloatingActionButton(
+              onPressed: () async {
+                await player.setAsset('assets/audio/cow.mp3');
+                player.play();
+              },
               child: Icon(Icons.thumb_up),
             ),
             Text("Nombre de like : "
