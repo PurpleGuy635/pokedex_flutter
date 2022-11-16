@@ -17,7 +17,7 @@ class StateTest extends State<Mapscreen> {
   String unys = "Unys";
   String kalos = "Kalos";
   String alola = "Alola";
-  Widget body = Image.asset("./asset/Kanto.png");
+  Widget body = Image.asset("./asset/images/Kanto.png");
 
   void _incrementCounter() {
     setState(() {
@@ -33,31 +33,31 @@ class StateTest extends State<Mapscreen> {
     setState(() {
       if (_counter == 0) {
         _region = kanto;
-        body = Image.asset("./asset/Kanto.png");
+        body = Image.asset("./asset/images/Kanto.png");
       }
       if (_counter == 1) {
         _region = johto;
-        body = Image.asset("./asset/Johto.png");
+        body = Image.asset("./asset/images/Johto.png");
       }
       if (_counter == 2) {
         _region = hoen;
-        body = Image.asset("./asset/hoen.png");
+        body = Image.asset("./asset/images/hoen.png");
       }
       if (_counter == 3) {
         _region = sinnoh;
-        body = Image.asset("./asset/sinnoh.png");
+        body = Image.asset("./asset/images/sinnoh.png");
       }
       if (_counter == 4) {
         _region = unys;
-        body = Image.asset("./asset/Unys.png");
+        body = Image.asset("./asset/images/Unys.png");
       }
       if (_counter == 5) {
         _region = kalos;
-        body = Image.asset("./asset/Kalos.png");
+        body = Image.asset("./asset/images/Kalos.png");
       }
       if (_counter == 6) {
         _region = alola;
-        body = Image.asset("./asset/alola.png");
+        body = Image.asset("./asset/images/alola.png");
       }
     });
   }
@@ -80,8 +80,13 @@ class StateTest extends State<Mapscreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('Pokedex'),
             const Text(
+                style: TextStyle(
+                    fontWeight: FontWeight.w600, height: 1, fontSize: 50),
+                'Pokedex'),
+            const Text(
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, height: 1, fontSize: 20),
               'Cette région se nomme :',
             ),
             Text(

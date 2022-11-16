@@ -67,15 +67,8 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
   assets:
-   - ./asset/Logo.png
-   - ./asset/Kanto.png
-   - ./asset/Johto.png
-   - ./asset/hoen.png
-   - ./asset/sinnoh.png
-   - ./asset/Unys.png
-   - ./asset/Kalos.png
-   - ./asset/alola.png
-
+   - ./asset/images/
+  
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
