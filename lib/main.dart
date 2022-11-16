@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(title: 'Flutter pokedex'),
       routes: <String, WidgetBuilder>{
         '/route1': (BuildContext context) => Mapscreen(),
-        '/route2': (BuildContext context) => pokedexscreen(),
+        '/route2': (BuildContext context) => pokedexScreen(),
         //'/route3': (BuildContext context) => ThirdPage(title: 'Page 3'),
       },
     );
