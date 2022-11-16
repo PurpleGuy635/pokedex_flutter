@@ -9,7 +9,9 @@ class Mapscreen extends StatefulWidget {
 
 class StateTest extends State<Mapscreen> {
   int _counter = 0;
-  String _region = "";
+  int _like = 0;
+  bool vrai = false;
+  String _region = "Kanto";
   String kanto = "Kanto";
   String johto = "Johto";
   String hoen = "Hoen";
@@ -21,10 +23,34 @@ class StateTest extends State<Mapscreen> {
 
   void _incrementCounter() {
     setState(() {
+      update();
       if (_counter == 6) {
         _counter = -1;
       }
       _counter++;
+    });
+    update();
+  }
+
+  void _likeBtn() {
+    setState(() {
+      if (_counter == 0 && _like < 6) {
+        if (_like == 0 || _like == 1 || _like == 2 || _like == 3) {
+          _like++;
+        }
+      } else if (_counter == 1 && _like < 6) {
+        _like++;
+      } else if (_counter == 2 && _like < 6) {
+        _like++;
+      } else if (_counter == 3 && _like < 6) {
+        _like++;
+      } else if (_counter == 4 && _like < 6) {
+        _like++;
+      } else if (_counter == 5 && _like < 6) {
+        _like++;
+      } else if (_counter == 6 && _like < 6) {
+        _like++;
+      }
     });
     update();
   }
@@ -64,6 +90,7 @@ class StateTest extends State<Mapscreen> {
 
   void _decrementCounter() {
     setState(() {
+      update();
       if (_counter == 0) {
         _counter = 7;
       }
@@ -97,7 +124,13 @@ class StateTest extends State<Mapscreen> {
               height: 300,
               width: 300,
               child: body,
-            )
+            ),
+            FloatingActionButton(
+              onPressed: _likeBtn,
+              child: Icon(Icons.thumb_up),
+            ),
+            Text("Nombre de like : "
+                "$_like"),
           ],
         ),
       ),
@@ -123,23 +156,9 @@ class StateTest extends State<Mapscreen> {
                 ),
                 onPressed: () => _incrementCounter(),
               ),
-              IconButton(
-                icon: const Icon(
-                  Icons.thumb_up,
-                  color: Colors.white,
-                ),
-                onPressed: () => _incrementCounter(),
-              ),
             ],
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        label: const Text('like'),
-        icon: const Icon(Icons.thumb_up),
-        backgroundColor: Colors.blue,
       ),
       drawer: Drawer(
         child: ListView(
@@ -162,8 +181,8 @@ class StateTest extends State<Mapscreen> {
               title: const Text('Kanto'),
               onTap: () {
                 _counter = 0;
-                Navigator.pop(context);
                 update();
+                Navigator.pop(context);
               },
             ),
             ListTile(
