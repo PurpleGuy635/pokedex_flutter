@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+//import 'package:just_audio/just_audio.dart';
 
 class Mapscreen extends StatefulWidget {
   const Mapscreen({Key? key}) : super(key: key);
@@ -9,7 +9,6 @@ class Mapscreen extends StatefulWidget {
 }
 
 class StateTest extends State<Mapscreen> {
-  MyApp myApp = MyApp();
   int _counter = 0;
   int _like = 0;
   String info =
