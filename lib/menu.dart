@@ -11,15 +11,14 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-                //image: AssetImage("./asset/dracaufeu.png"), fit: BoxFit.cover)),
-                image: AssetImage("./asset/images/alola.png"),
+                image: AssetImage("./asset/images/drac.png"),
                 fit: BoxFit.cover)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Positioned(
               child: (Image.asset(
-                "./asset/images/Logo.png",
+                "./asset/images/pika.png",
                 height: 100,
                 width: 100,
               )),
