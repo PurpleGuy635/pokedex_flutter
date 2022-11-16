@@ -9,6 +9,16 @@ class HomeScreen extends StatelessWidget {
         title: Text("Pokedex - Menu"),
       ),
       body: Center(
+        /*HomeScreen container(){
+        Positioned(
+            height: 50,
+            width: 50,
+            right: 100,  
+            top: 50,
+            Image.asset("./asset/Kanto.png"),
+              );
+        }*/
+
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

@@ -17,15 +17,6 @@ class StateTest extends State<Mapscreen> {
         _counter = -1;
       }
       _counter++;
-
-      /*switch (_counter) {
-        case 0:
-          body = Image.asset("./asset/Kanto.png");
-          break;
-        case 1:
-          body = Image.asset("./asset/hoen.png");
-          break;
-      }*/
     });
     update();
   }
