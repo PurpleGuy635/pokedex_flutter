@@ -10,6 +10,8 @@ class Mapscreen extends StatefulWidget {
 class StateTest extends State<Mapscreen> {
   int _counter = 0;
   int _like = 0;
+  String info =
+      "Il est l'une des régions imaginaires de la série jeux vidéo Pokémon. Présent dans les jeux vidéo Pokémon,Il a été conçu en se inspirant région japonais la Kanto qui comprend, en plus d'autres ville, Aussi la capitale du Japon, Tokyo.";
   String _region = "Kanto";
   String kanto = "Kanto";
   String johto = "Johto";
@@ -92,7 +94,7 @@ class StateTest extends State<Mapscreen> {
           children: <Widget>[
             const Text(
                 style: TextStyle(
-                    fontWeight: FontWeight.w600, height: 1, fontSize: 50),
+                    fontWeight: FontWeight.w600, height: 1, fontSize: 30),
                 'Pokedex'),
             const Text(
               style: TextStyle(
@@ -107,6 +109,9 @@ class StateTest extends State<Mapscreen> {
               height: 300,
               width: 300,
               child: body,
+            ),
+            Text(
+              '$info',
             ),
             FloatingActionButton(
               onPressed: _likeBtn,
@@ -152,7 +157,7 @@ class StateTest extends State<Mapscreen> {
               decoration: BoxDecoration(
                 color: Colors.red,
               ),
-              child: Text('MAP'),
+              child: Text('Map'),
             ),
             ListTile(
               title: const Text('Retour'),
