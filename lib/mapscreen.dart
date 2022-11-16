@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 
 class Mapscreen extends StatefulWidget {
   //const Mapscreen({Key? key}) : super(key: key);
@@ -15,16 +16,28 @@ class StateTest extends State<Mapscreen> {
   String _region = "Kanto";
   String kanto = "Kanto";
   String johto = "Johto";
-  String hoen = "Hoen";
+  String hoenn = "Hoenn";
   String sinnoh = "Sinnoh";
   String unys = "Unys";
   String kalos = "Kalos";
   String alola = "Alola";
   Widget body = Image.asset("./asset/images/Kanto.png");
 
+  late AudioPlayer player;
+  @override
+  void initState() {
+    super.initState();
+    player = AudioPlayer();
+  }
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
+
   void _incrementCounter() {
     setState(() {
-      update();
       if (_counter == 6) {
         _counter = -1;
       }
@@ -45,28 +58,42 @@ class StateTest extends State<Mapscreen> {
       if (_counter == 0) {
         _region = kanto;
         body = Image.asset("./asset/images/Kanto.png");
+        info =
+            "Il est l'une des régions imaginaires de la série jeux vidéo Pokémon. Présent dans les jeux vidéo Pokémon,Il a été conçu en se inspirant région japonais la Kanto qui comprend, en plus d'autres ville, Aussi la capitale du Japon, Tokyo.";
       }
       if (_counter == 1) {
         _region = johto;
+        info =
+            "Johto est l'une des régions du Monde Pokémon, située à l'ouest de Kanto et au nord-est d'Hoenn.";
         body = Image.asset("./asset/images/Johto.png");
       }
       if (_counter == 2) {
-        _region = hoen;
+        info =
+            "Hoenn est une région du monde Pokémon qui apparaît dans les jeux Pokémon Rubis, Saphir et Émeraude,etc. Elle est située au sud-ouest de Johto et de Kanto. Elle correspond à l'île japonaise de Kyushu et à une partie de l'archipel de la préfecture d'Okinawa.";
+        _region = hoenn;
         body = Image.asset("./asset/images/hoen.png");
       }
       if (_counter == 3) {
+        info =
+            "Sinnoh est une région du monde Pokémon, lieu où se déroule l' aventure des jeux Pokémon Diamant, Perle et Platine.La région Sinnoh se trouve au nord de Kanto. Cette région est inspirée de l'île de Hokkaido, au Japon. Autrefois, cette région se nommait Hisui.";
         _region = sinnoh;
         body = Image.asset("./asset/images/sinnoh.png");
       }
       if (_counter == 4) {
+        info =
+            "Unys est une nouvelle région et le lieu principal de Pokémon Noire et Blanche. Elle est éloignée de Kanto, Johto, Hoenn et Sinnoh. Ces régions ne sont accessibles que via avion ou bateau en partant d'Unys.Celle-ci est beaucoup plus industrialisée que les précédentes.";
         _region = unys;
         body = Image.asset("./asset/images/Unys.png");
       }
       if (_counter == 5) {
+        info =
+            "La géographie de Kalos est calquée sur celle de la France métropolitaine repésenter en trois régions.Ces dernières sont représentées par un drapeau aux couleurs du drapeau de la France. Le district central rappelle par sa forme la Tour Prismatique.";
         _region = kalos;
         body = Image.asset("./asset/images/Kalos.png");
       }
       if (_counter == 6) {
+        info =
+            "Alola est la région où se déroule l'intrigue des jeux Pokémon Soleil et Lune et Pokémon Ultra-Soleil et Ultra-Lune. Cette région est basée sur l'archipel de Hawaï.";
         _region = alola;
         body = Image.asset("./asset/images/alola.png");
       }
@@ -75,7 +102,6 @@ class StateTest extends State<Mapscreen> {
 
   void _decrementCounter() {
     setState(() {
-      update();
       if (_counter == 0) {
         _counter = 7;
       }
@@ -87,31 +113,29 @@ class StateTest extends State<Mapscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Map")),
+      appBar: AppBar(title: Text("Quelques maps de Pokemon")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
                 style: TextStyle(
-                    fontWeight: FontWeight.w600, height: 1, fontSize: 30),
+                    fontWeight: FontWeight.w600, height: 2, fontSize: 30),
                 'Pokedex'),
-            const Text(
+            Text(
               style: TextStyle(
                   fontWeight: FontWeight.bold, height: 1, fontSize: 20),
-              'Cette région se nomme :',
+              'Voici la region $_region',
+              //style: Theme.of(context).textTheme.headline4,
             ),
             Text(
-              '$_region',
-              style: Theme.of(context).textTheme.headline4,
+              '- $info -',
+              style: TextStyle(fontWeight: FontWeight.normal),
             ),
             SizedBox(
               height: 300,
               width: 300,
               child: body,
-            ),
-            Text(
-              '$info',
             ),
             FloatingActionButton(
               onPressed: _likeBtn,
@@ -119,10 +143,18 @@ class StateTest extends State<Mapscreen> {
             ),
             Text("Nombre de like : "
                 "$_like"),
+            FloatingActionButton(
+              onPressed: () async {
+                await player.setAsset('assets/audio/cow.mp3');
+                player.play();
+              },
+              child: Icon(Icons.thumb_up),
+            ),
+            Text("Nombre de like : "
+                "$_like"),
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         color: Colors.red,
@@ -137,6 +169,13 @@ class StateTest extends State<Mapscreen> {
                   color: Colors.black,
                 ),
                 onPressed: () => _decrementCounter(),
+              ),
+              IconButton(
+                icon: const Icon(
+                  Icons.home_sharp,
+                  color: Colors.white,
+                ),
+                onPressed: () => Navigator.pop(context),
               ),
               IconButton(
                 icon: const Icon(
