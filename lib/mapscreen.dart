@@ -34,23 +34,7 @@ class StateTest extends State<Mapscreen> {
 
   void _likeBtn() {
     setState(() {
-      if (_counter == 0 && _like < 6) {
-        if (_like == 0 || _like == 1 || _like == 2 || _like == 3) {
-          _like++;
-        }
-      } else if (_counter == 1 && _like < 6) {
-        _like++;
-      } else if (_counter == 2 && _like < 6) {
-        _like++;
-      } else if (_counter == 3 && _like < 6) {
-        _like++;
-      } else if (_counter == 4 && _like < 6) {
-        _like++;
-      } else if (_counter == 5 && _like < 6) {
-        _like++;
-      } else if (_counter == 6 && _like < 6) {
-        _like++;
-      }
+      _like++;
     });
     update();
   }
@@ -102,7 +86,7 @@ class StateTest extends State<Mapscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("MAP")),
+      appBar: AppBar(title: Text("Map")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
