@@ -9,6 +9,14 @@ class Mapscreen extends StatefulWidget {
 
 class StateTest extends State<Mapscreen> {
   int _counter = 0;
+  String _region = "";
+  String kanto = "Kanto";
+  String johto = "Johto";
+  String hoen = "Hoen";
+  String sinnoh = "Sinnoh";
+  String unys = "Unys";
+  String kalos = "Kalos";
+  String alola = "Alola";
   Widget body = Image.asset("./asset/Kanto.png");
 
   void _incrementCounter() {
@@ -24,24 +32,31 @@ class StateTest extends State<Mapscreen> {
   update() {
     setState(() {
       if (_counter == 0) {
+        _region = kanto;
         body = Image.asset("./asset/Kanto.png");
       }
       if (_counter == 1) {
+        _region = johto;
         body = Image.asset("./asset/Johto.png");
       }
       if (_counter == 2) {
+        _region = hoen;
         body = Image.asset("./asset/hoen.png");
       }
       if (_counter == 3) {
+        _region = sinnoh;
         body = Image.asset("./asset/sinnoh.png");
       }
       if (_counter == 4) {
+        _region = unys;
         body = Image.asset("./asset/Unys.png");
       }
       if (_counter == 5) {
+        _region = kalos;
         body = Image.asset("./asset/Kalos.png");
       }
       if (_counter == 6) {
+        _region = alola;
         body = Image.asset("./asset/alola.png");
       }
     });
@@ -67,10 +82,10 @@ class StateTest extends State<Mapscreen> {
           children: <Widget>[
             const Text('Pokedex'),
             const Text(
-              'Ce chiffre correspond à la région du pokedex :',
+              'Cette région se nomme :',
             ),
             Text(
-              '$_counter',
+              '$_region',
               style: Theme.of(context).textTheme.headline4,
             ),
             SizedBox(
