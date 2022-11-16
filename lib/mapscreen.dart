@@ -49,7 +49,8 @@ class StateTest extends State<Mapscreen> {
       }
       if (_counter == 1) {
         _region = johto;
-        info = "test1";
+        info =
+            "Johto est l'une des régions du Monde Pokémon, située à l'ouest de Kanto et au nord-est d'Hoenn.";
         body = Image.asset("./asset/images/Johto.png");
       }
       if (_counter == 2) {
@@ -71,12 +72,14 @@ class StateTest extends State<Mapscreen> {
         body = Image.asset("./asset/images/Unys.png");
       }
       if (_counter == 5) {
-        info = "test5";
+        info =
+            "La géographie de Kalos est calquée sur celle de la France métropolitaine repésenter en trois régions.Ces dernières sont représentées par un drapeau aux couleurs du drapeau de la France. Le district central rappelle par sa forme la Tour Prismatique.";
         _region = kalos;
         body = Image.asset("./asset/images/Kalos.png");
       }
       if (_counter == 6) {
-        info = "test6";
+        info =
+            "Alola est la région où se déroule l'intrigue des jeux Pokémon Soleil et Lune et Pokémon Ultra-Soleil et Ultra-Lune. Cette région est basée sur l'archipel de Hawaï.";
         _region = alola;
         body = Image.asset("./asset/images/alola.png");
       }
