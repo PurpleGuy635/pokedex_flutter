@@ -23,20 +23,6 @@ class StateTest extends State<Mapscreen> {
   String alola = "Alola";
   Widget body = Image.asset("./asset/images/Kanto.png");
 
-  late AudioPlayer player;
-
-  @override
-  void initState() {
-    super.initState();
-    player = AudioPlayer();
-  }
-
-  @override
-  void dispose() {
-    player.dispose();
-    super.dispose();
-  }
-
   void _incrementCounter() {
     setState(() {
       if (_counter == 6) {
@@ -139,13 +125,10 @@ class StateTest extends State<Mapscreen> {
               child: body,
             ),
             FloatingActionButton(
-              onPressed: () async {
-                await player.setAsset('assets/audio/pokemon.mp3');
-                player.play();
-              },
+              onPressed: () async {},
               child: Icon(Icons.thumb_up),
             ),
-            Text("Nombre de like : "
+            Text("test "
                 "$_like"),
           ],
         ),
