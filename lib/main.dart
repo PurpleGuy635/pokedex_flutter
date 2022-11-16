@@ -44,13 +44,13 @@ class SplashScreenState extends State<MyHomePage> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 3),
+        const Duration(seconds: 3),
         () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => HomeScreen())));
   }
 
   @override
-  Widget build(BuildContextcontext) {
+  Widget build(BuildContext context) {
     return Container(
         color: Colors.red, child: Image.asset("./asset/images/Logo.png"));
     //FlutterLogo(size: MediaQuery.of(context).size.height));
