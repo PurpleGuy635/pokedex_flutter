@@ -1,10 +1,13 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, slash_for_doc_comments
 
 import 'dart:developer';
 
+import 'package:fluttedex_api/utils/generateList.dart';
 import 'package:flutter/material.dart';
 import 'api/callAPI.dart';
 import 'objects/pokemon.dart';
+
+GeneratePokeList Pokelist = GeneratePokeList('Choisi ton pokémon');
 
 class pokedexScreen extends StatefulWidget {
   const pokedexScreen({super.key});
@@ -14,73 +17,38 @@ class pokedexScreen extends StatefulWidget {
 }
 
 class _pokedexScreenState extends State<pokedexScreen> {
-  //with TickerProviderStateMixin {
+  List<String> list = ['Choisi ton pokémon'];
+  late String dropdownValue = list.first;
+
   late Widget selector;
   late Widget pokeToScreen;
   late Widget loader;
   API api = API();
   late Pokemon pokemon;
-  String selectedValue = 'choisi ton pokémon';
-
-  // late AnimationController controller;
 
   bool hasloaded = false;
   bool hasPokemon = false;
 
-  late List<DropdownMenuItem<String>> menuItems;
-
   late Widget body;
-
-  /**
-  @override
-  void initState() {
-    log('initiate');
-    controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 5),
-    )..addListener(() {
-        setState(() {});
-      });
-    controller.repeat(reverse: true);
-    super.initState();
-  }
-  */
+  Widget downbody = Container();
 
   createSelecterWidget() {
-    selector = Container(
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text(style: TextStyle(fontSize: 25), 'Choisit un pokémon')
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              DropdownButton<String>(
-                value: selectedValue,
-                onChanged: (value) {},
-                items: menuItems,
-              )
-            ],
-          ),
-        ],
-      ),
+    selector = Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Text(style: TextStyle(fontSize: 25), 'Choisit un pokémon')
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [buildDropDown()],
+        ),
+      ],
     );
   }
 
-/**
-  createLoader() {
-    loader = Container(
-      child: CircularProgressIndicator(
-        value: controller.value,
-        semanticsLabel: 'Circular progress indicator',
-      ),
-    );
-  }
-*/
   choosed(String id) async {
     await api.call(id);
 
@@ -88,42 +56,89 @@ class _pokedexScreenState extends State<pokedexScreen> {
 
     pokemon = Pokemon(temp['name'], temp['id']);
     log(pokemon.getName());
+
+    if (pokemon != 'Choisi ton pokémon') {
+      log(pokemon.toString());
+
+      setState(() {
+        log(pokemon.getSprite());
+        downbody = Image.network(pokemon.getSprite());
+      });
+    }
   }
 
   init() {
-    /**--------------- */
-    //choosed(25);
-    /**--------------- */
-    initList();
+    Pokelist.initList();
+    list = Pokelist.getList();
+
     createSelecterWidget();
-    //createLoader();
 
     body = selector;
   }
 
-  initList() {
-    menuItems = [
-      DropdownMenuItem(child: Text("pikachu"), value: '25'),
-      DropdownMenuItem(child: Text("Bulbizare"), value: "1"),
-      DropdownMenuItem(child: Text("Tiplouf"), value: "2"),
-      DropdownMenuItem(child: Text("Psykokwak"), value: "3"),
-    ];
-  }
-
   @override
   Widget build(BuildContext context) {
-    init();
+    return FutureBuilder(
+        future: init(),
+        builder: (BuildContext context, AsyncSnapshot list) {
+          Widget children;
+          if (list.hasData) {
+            children = Scaffold(
+              appBar: AppBar(
+                title: Text('Pokédex'),
+              ),
+            );
+          } else {
+            children = Column(
+              children: const [Text('no data')],
+            );
+          }
+          return Scaffold(
+            body: scaffold(),
+          );
+        });
+  }
+
+  Widget scaffold() {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('pokédex'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [body],
+        appBar: AppBar(
+          title: const Text('pokédex'),
         ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [body, downbody],
+          ),
+        ));
+  }
+
+  Widget buildDropDown() {
+    return DropdownButton<String>(
+      value: dropdownValue,
+      icon: const Icon(Icons.arrow_downward),
+      elevation: 16,
+      style: const TextStyle(color: Colors.blueAccent),
+      underline: Container(
+        height: 2.5,
+        color: Colors.redAccent,
       ),
+      onChanged: (String? value) {
+        // This is called when the user selects an item.
+        setState(() {
+          dropdownValue = value!;
+          log(value);
+        });
+        if (value != list.first) {
+          choosed(Pokelist.whosThatPokemon(value!).toString());
+        }
+      },
+      items: list.map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
     );
   }
 }

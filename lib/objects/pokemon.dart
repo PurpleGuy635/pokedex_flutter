@@ -14,11 +14,24 @@ class Pokemon {
     return _name;
   }
 
+  setName(String name) {
+    _name = name;
+  }
+
   String getSprite() {
     return _sprite;
   }
 
+  setSprite(String sprite) {
+    _sprite =
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$sprite.png";
+  }
+
   String getId() {
     return _id;
+  }
+
+  setId(String id) {
+    _id = id;
   }
 }
