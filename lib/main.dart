@@ -51,7 +51,8 @@ class SplashScreenState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContextcontext) {
-    return Container(color: Colors.red, child: Image.asset("./asset/Logo.png"));
+    return Container(
+        color: Colors.red, child: Image.asset("./asset/images/Logo.png"));
     //FlutterLogo(size: MediaQuery.of(context).size.height));
   }
 }
