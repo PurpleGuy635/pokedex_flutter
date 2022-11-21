@@ -13,7 +13,7 @@ Le pokédex :
 
 Le MapDex : 
 	- Re-design de page
-	- 
+	
 
 - Ajout d’un mini jeu de devinettes : 
 On montre un sprite de pokémon au hasard et l’utilisateur doit deviner quel est le pokémon. 
