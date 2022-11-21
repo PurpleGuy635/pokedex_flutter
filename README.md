@@ -1,16 +1,19 @@
-# fluttedex_api
+## Évolutions possibles : 
 
-A new Flutter project.
+Menu : 
+	- Re-design du menu de sélection
 
-## Getting Started
+Le pokédex : 
+	- Implémenter une description plus détaillée et plus fournie des pokémons
+	- ajout de sliders de capacités.
+	- Suppression du deadcode
+	- Optimisations diverses
+	- Ajout d’un dictionnaire de historique de pokémons
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Le MapDex : 
+	- Re-design de page
+	- 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Ajout d’un mini jeu de devinettes : 
+On montre un sprite de pokémon au hasard et l’utilisateur doit deviner quel est le pokémon. 
