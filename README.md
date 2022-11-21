@@ -1,7 +1,7 @@
 ## Évolutions possibles : 
 
 Menu : 
-	- Re-design du menu de sélection
+- Re-design du menu de sélection
 
 Le pokédex : 
 - Implémenter une description plus détaillée et plus fournie des pokémons
