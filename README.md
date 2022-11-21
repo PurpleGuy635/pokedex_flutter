@@ -1,3 +1,6 @@
+### Pokédex flutter
+Projet de cours.
+
 ## Évolutions possibles : 
 
 Menu : 
