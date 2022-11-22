@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types, slash_for_doc_comments
 
 import 'dart:developer';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import 'package:fluttedex_api/utils/generateList.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class _pokedexScreenState extends State<pokedexScreen> {
   late Widget pokeToScreen;
   late Widget loader;
   API api = API();
-  late Pokemon pokemon;
+  Pokemon pokemon = Pokemon('Choisis un pokémon', 0);
 
   bool hasloaded = false;
   bool hasPokemon = false;
@@ -37,6 +38,7 @@ class _pokedexScreenState extends State<pokedexScreen> {
   late Widget body;
   Widget downbody = Container();
   Widget slidebody = Container();
+
   //
   //----------------------VARIABLES
   //
@@ -49,19 +51,51 @@ class _pokedexScreenState extends State<pokedexScreen> {
         elevation: 25,
         child: Column(
           children: [
-            const Padding(padding: EdgeInsets.all(5)),
+            const Text(style: TextStyle(fontSize: 25), 'Choisit un pokémon'),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(style: TextStyle(fontSize: 25), 'Choisit un pokémon')
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [buildDropDown()],
-            ),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [buildDropDown()])
           ],
         ));
+  }
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  Widget searchBar() {
+    /////Erreur de construction inconnue.
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextFormField(
+            // The validator receives the text that the user has entered.
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: ElevatedButton(
+              onPressed: () {
+                // Validate returns true if the form is valid, or false otherwise.
+                if (_formKey.currentState!.validate()) {
+                  // If the form is valid, display a snackbar. In the real world,
+                  // you'd often call a server or save the information in a database.
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Processing Data')),
+                  );
+                }
+              },
+              child: const Text('Submit'),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   choosed(String id) async {
@@ -128,32 +162,37 @@ class _pokedexScreenState extends State<pokedexScreen> {
           title: const Text('pokédex'),
         ),
         backgroundColor: Colors.amberAccent,
-        body: Center(
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(
-                      icon: icon,
-                      onPressed: () {
-                        if (icon ==
-                            const Icon(Icons.favorite_border_outlined)) {
-                          setState(() {
-                            icon = const Icon(Icons.favorite);
-                          });
-                        } else {
-                          setState(() {
-                            icon = const Icon(Icons.favorite_border_outlined);
-                          });
-                        }
-                      })
-                ],
-              ),
-              body,
-              downbody,
-              slidebody,
-            ],
+        body: SlidingUpPanel(
+          renderPanelSheet: false,
+          panel: _floatingPanel(),
+          collapsed: _floatingCollapsed(),
+          body: Center(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                        icon: icon,
+                        onPressed: () {
+                          if (icon ==
+                              const Icon(Icons.favorite_border_outlined)) {
+                            setState(() {
+                              icon = const Icon(Icons.favorite);
+                            });
+                          } else {
+                            setState(() {
+                              icon = const Icon(Icons.favorite_border_outlined);
+                            });
+                          }
+                        })
+                  ],
+                ),
+                body,
+                downbody,
+                slidebody,
+              ],
+            ),
           ),
         ));
   }
@@ -197,6 +236,45 @@ class _pokedexScreenState extends State<pokedexScreen> {
           child: Text(value),
         );
       }).toList(),
+    );
+  }
+
+  Widget _floatingPanel() {
+    return Container(
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(24.0)),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 20.0,
+              color: Colors.grey,
+            ),
+          ]),
+      margin: const EdgeInsets.all(24.0),
+      child: Center(
+        child: Column(children: [
+          Text(
+              style: const TextStyle(fontSize: 20),
+              '${pokemon.getName()} \n ID: ${pokemon.getId()}')
+        ]),
+      ),
+    );
+  }
+
+  Widget _floatingCollapsed() {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.blueGrey,
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(24.0), topRight: Radius.circular(24.0)),
+      ),
+      margin: const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 0.0),
+      child: const Center(
+        child: Text(
+          "Plus d'informations",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
     );
   }
 }
