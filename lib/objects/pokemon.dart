@@ -2,8 +2,9 @@ class Pokemon {
   late String _name;
   late String _id;
   late String _sprite;
+  late String _capacities;
 
-  Pokemon(name, id) {
+  Pokemon(name, id, capacities) {
     _name = name;
     _id = id.toString();
     _sprite =

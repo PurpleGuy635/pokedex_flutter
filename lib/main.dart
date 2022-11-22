@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(title: 'Flutter pokedex'),
       routes: <String, WidgetBuilder>{
         '/route1': (BuildContext context) => Mapscreen(),
-        '/route2': (BuildContext context) => pokedexScreen(),
+        '/route2': (BuildContext context) => const pokedexScreen(),
         //'/route3': (BuildContext context) => ThirdPage(title: 'Page 3'),
       },
     );
@@ -52,7 +52,8 @@ class SplashScreenState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.red, child: Image.asset("./asset/images/Logo.png"));
+        color: Color.fromARGB(255, 255, 22, 45),
+        child: Image.asset("./asset/images/Logo.png"));
     //FlutterLogo(size: MediaQuery.of(context).size.height));
   }
 }

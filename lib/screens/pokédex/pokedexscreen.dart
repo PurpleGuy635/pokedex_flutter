@@ -30,7 +30,7 @@ class _pokedexScreenState extends State<pokedexScreen> {
   late Widget pokeToScreen;
   late Widget loader;
   API api = API();
-  Pokemon pokemon = Pokemon('Choisis un pokémon', 0);
+  Pokemon pokemon = Pokemon('Choisis un pokémon', 0, null);
 
   bool hasloaded = false;
   bool hasPokemon = false;
@@ -102,8 +102,9 @@ class _pokedexScreenState extends State<pokedexScreen> {
     await api.call(id);
 
     var temp = api.getPokemon();
+    log(' List of capacitites : ${temp['abilities'].toString()}');
 
-    pokemon = Pokemon(temp['name'], temp['id']);
+    pokemon = Pokemon(temp['name'], temp['id'], temp['']);
     log(pokemon.getName());
 
     if (pokemon != 'Choisi ton pokémon') {
@@ -264,7 +265,7 @@ class _pokedexScreenState extends State<pokedexScreen> {
   Widget _floatingCollapsed() {
     return Container(
       decoration: const BoxDecoration(
-        color: Colors.blueGrey,
+        color: Color.fromARGB(255, 255, 22, 45),
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(24.0), topRight: Radius.circular(24.0)),
       ),
