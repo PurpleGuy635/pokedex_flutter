@@ -21,7 +21,10 @@ class GeneratePokeList {
   }
 
   initList() async {
-    if (generated) return;
+    if (generated) {
+      log('List already generated..... Aborted :\'(');
+      return;
+    }
     map = convert.jsonDecode(await getJson());
 
     for (var element in map) {

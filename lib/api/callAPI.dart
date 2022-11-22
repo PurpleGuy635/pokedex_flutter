@@ -1,16 +1,19 @@
 // ignore_for_file: non_constant_identifier_names
 import 'dart:developer';
-import 'package:fluttedex_api/objects/pokemon.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
-class API {
+class APIold {
   ///
   ///Instancier l'api et appeler la méthode call avec comme paramètre un id.
   ///Instance the API and call "call" method with int id parameter
   ///
-  final String _URL = 'https://pokeapi.co/api/v2/pokemon/';
+  late String _URL;
   late Map<String, dynamic> _pokemons;
+
+  API(String URL){
+    _URL = URL;
+  }
 
   Map<String, dynamic> getPokemon() {
     if (_pokemons == null) {
